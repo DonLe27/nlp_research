@@ -1,0 +1,13 @@
+from Bio import SeqIO
+
+files = [
+    'deepgoplus.cafa3.test-bonnie-cc(copy)',
+    'deepgoplus.cafa3.train-bonnie-cc(copy)',
+    'deepgoplus.cafa3.train-bonnie-mf(copy)',
+    'deepgoplus.cafa3.test-bonnie-mf(copy)'
+]
+for f in files:
+    records = SeqIO.parse(f + '.tsv', "tab")
+    f = f.replace('(copy)', '')
+    count = SeqIO.write(records, f + ".fasta", "fasta")
+    print("Converted %i records" % count)
